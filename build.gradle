@@ -18,6 +18,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.auth0:java-jwt:4.4.0'
+    implementation("com.google.guava:guava:33.0.0-jre")
 }
 
 tasks.named('test') {
