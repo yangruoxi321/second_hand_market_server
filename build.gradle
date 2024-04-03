@@ -17,12 +17,14 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.projectlombok:lombok'
+    implementation 'org.projectlombok:lombok:1.18.32'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.auth0:java-jwt:4.4.0'
     implementation("com.google.guava:guava:33.0.0-jre")
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
 }
 
 tasks.named('test') {

@@ -1,4 +1,4 @@
-package com.example.second_hand_market_server.sevice;
+package com.example.second_hand_market_server.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
