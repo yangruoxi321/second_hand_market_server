@@ -25,8 +25,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     //annotationProcessor 'org.projectlombok:lombok:1.18.12'
     runtimeOnly 'org.postgresql:postgresql:42.7.3'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
 }
 
 tasks.named('test') {
