@@ -17,16 +17,30 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.projectlombok:lombok:1.18.32'
+    //implementation 'org.projectlombok:lombok:1.18.32'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.auth0:java-jwt:4.4.0'
     implementation("com.google.guava:guava:33.0.0-jre")
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    //annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
 }

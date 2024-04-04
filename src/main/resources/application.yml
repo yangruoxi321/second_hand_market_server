@@ -10,3 +10,8 @@ spring:
           auth: true
           starttls:
             enable: true
+  datasource:
+    url: jdbc:postgresql://${DATABASE_URL:localhost}:5432/second_hand_market
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:123456}
+    driver-class-name: org.postgresql.Driver
