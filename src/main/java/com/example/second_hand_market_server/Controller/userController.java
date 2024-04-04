@@ -1,6 +1,7 @@
 package com.example.second_hand_market_server.Controller;
 
 import com.example.second_hand_market_server.Respository.UserRepository;
+import com.example.second_hand_market_server.Service.UserService;
 import com.example.second_hand_market_server.catchException.DuplicateKeyException;
 import com.example.second_hand_market_server.model.RegisterBody;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,15 @@ public class userController {
     private UserRepository userRepository;
 
 
+   @Autowired
+    private UserService userService;
+
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@RequestBody RegisterBody body){
         try{
-            userRepository.createNewUser(body.getEmail(), body.getUserName());
+            userService.signUp(body.getEmail(), body.getUserName(), body.getPassword());
+            //userRepository.createNewUser(body.getEmail(), body.getUserName());
         }catch (RuntimeException e) {
             if (e instanceof DataIntegrityViolationException) {
                 String errorMessage = e.getMessage();

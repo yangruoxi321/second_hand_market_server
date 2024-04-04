@@ -14,28 +14,17 @@ java {
 repositories {
     mavenCentral()
 }
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    //implementation 'org.projectlombok:lombok:1.18.32'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.auth0:java-jwt:4.4.0'
     implementation("com.google.guava:guava:33.0.0-jre")
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    //annotationProcessor 'org.projectlombok:lombok:1.18.12'
     implementation 'org.postgresql:postgresql:42.7.3'
+    testImplementation 'org.springframework.security:spring-security-test'
     runtimeOnly 'org.postgresql:postgresql:42.7.3'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
-repositories {
-    mavenCentral()
-}
-dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
@@ -43,3 +32,8 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
 }
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+

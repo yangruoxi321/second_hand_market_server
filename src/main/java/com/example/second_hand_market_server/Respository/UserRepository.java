@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
     @Modifying
-    @Query("INSERT INTO users (user_name, email) VALUES (:userName, :email)")
-    void createNewUser(@Param("email") String email,@Param("userName") String userName);
+    @Query("INSERT INTO users (user_name, email,password) VALUES (:userName,:email,:password)")
+    void createNewUser(@Param("email") String email,@Param("userName") String userName,@Param("password") String password);
 }
 
 
@@ -23,3 +23,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 //        user_name VARCHAR(255),
 //email VARCHAR(255)
 //);
+
+//public interface UserRepository extends CrudRepository<User, Long> {
+//    @Modifying
+//    @Query("INSERT INTO users (user_name, email, password) VALUES (:email,:userName,:password)")
+//    void createNewUser(@Param("email") String email,@Param("userName") String userName);
+//}
