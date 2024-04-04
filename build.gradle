@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     //annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    implementation 'org.postgresql:postgresql:42.7.3'
     runtimeOnly 'org.postgresql:postgresql:42.7.3'
 }
 
