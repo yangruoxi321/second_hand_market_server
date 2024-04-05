@@ -25,12 +25,14 @@ dependencies {
     implementation 'org.postgresql:postgresql:42.7.3'
     testImplementation 'org.springframework.security:spring-security-test'
     runtimeOnly 'org.postgresql:postgresql:42.7.3'
-
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
-
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+    implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+
 }
 
 tasks.named('test') {
