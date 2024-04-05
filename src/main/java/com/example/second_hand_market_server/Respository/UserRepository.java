@@ -14,23 +14,21 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Modifying
     @Query("INSERT INTO users (user_name,email,password) VALUES (:userName,:email,:password)")
     void createNewUser(@Param("email") String email,@Param("userName") String userName,@Param("password") String password);
-    @Modifying
-    @Query("SELECT id FROM users WHERE (email) = (:email)")
+
+    @Query("SELECT id FROM users WHERE email = :email")
     Integer findUserByEmail(@Param("email") String email);
 
-    @Modifying
-    @Query("SELECT id FROM users WHERE (user_name) = (:user_name)")
+
+    @Query("SELECT id FROM users WHERE user_name = :user_name")
     Integer findUserByUserName(@Param("email") String user_name);
 
-    @Modifying
-    @Query("SELECT user_name FROM users WHERE (id) = (:id)")
+
+    @Query("SELECT user_name FROM users WHERE id = :id")
     String findUserNameById(@Param("id") Integer id);
 
-    @Modifying
-    @Query("SELECT password FROM users WHERE (id) = (:id)")
+
+    @Query("SELECT password FROM users WHERE id = :id")
     String getPassword(@Param("id") Integer id);
-
-
 }
 
 
