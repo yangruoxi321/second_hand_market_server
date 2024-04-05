@@ -36,4 +36,13 @@ public class userController {
             throw e;
         }
     }
+    @PostMapping("/email_login")
+    public String loginViaUserEmail(@RequestBody RegisterBody body){
+            return userService.signInViaEmail(body.getEmail(),body.getPassword());
+        }
+    @PostMapping("/user_name_login")
+    public void loginViaUserName(@RequestBody RegisterBody body) {
+        userService.signInViaUserName(body.getUserName(), body.getPassword());
+    }
 }
+
