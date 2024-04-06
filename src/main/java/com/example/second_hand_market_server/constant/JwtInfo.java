@@ -5,9 +5,4 @@ public class JwtInfo {
     public static final String EMAIL_KEY = "email";
     public static final String USERNAME_KEY = "user_name";
 
-
-    public enum Token {
-        ACCESS_TOKEN,
-        REFRESH_TOKEN
-    }
 }
