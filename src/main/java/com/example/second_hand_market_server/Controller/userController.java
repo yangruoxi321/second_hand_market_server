@@ -1,5 +1,6 @@
 package com.example.second_hand_market_server.Controller;
 
+import com.example.second_hand_market_server.Entity.User;
 import com.example.second_hand_market_server.Respository.UserRepository;
 import com.example.second_hand_market_server.Service.UserService;
 import com.example.second_hand_market_server.catchException.DuplicateKeyException;
@@ -44,6 +45,11 @@ public class userController {
     @PostMapping("/user_name_login")
     public void loginViaUserName(@RequestBody RegisterBody body) {
         userService.signInViaUserName(body.getUserName(), body.getPassword());
+    }
+
+    @PostMapping("/getUserById")
+    public User getUserById(@RequestBody User body) {
+       return userService.getUserById(body.getId());
     }
 }
 

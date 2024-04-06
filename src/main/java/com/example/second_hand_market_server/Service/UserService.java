@@ -1,5 +1,6 @@
 package com.example.second_hand_market_server.Service;
 
+import com.example.second_hand_market_server.Entity.User;
 import com.example.second_hand_market_server.Response.ErrorResponse;
 import com.example.second_hand_market_server.Respository.UserRepository;
 import com.example.second_hand_market_server.model.TokenBody;
@@ -29,7 +30,7 @@ public class UserService {
     public ResponseEntity<?> signInViaEmail(String email, String rawPassword){
         TokenBody tokenBody = new TokenBody();
         email = email.toLowerCase();
-        Integer userId = userRepository.findUserByEmail(email);
+        Long userId = userRepository.findUserIDByEmail(email);
 
         if(userId == null) {
             return ResponseEntity.badRequest().body(new ErrorResponse("There is no such user"));
@@ -51,5 +52,8 @@ public class UserService {
 
     public  void signInViaUserName(String username, String rawPassword){
 
+    }
+    public User getUserById(Long user_id){
+        return userRepository.getUserById(user_id);
     }
 }
