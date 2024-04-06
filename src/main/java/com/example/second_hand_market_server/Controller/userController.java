@@ -7,6 +7,7 @@ import com.example.second_hand_market_server.model.RegisterBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -37,7 +38,7 @@ public class userController {
         }
     }
     @PostMapping("/email_login")
-    public String loginViaUserEmail(@RequestBody RegisterBody body){
+    public ResponseEntity<?> loginViaUserEmail(@RequestBody RegisterBody body){
             return userService.signInViaEmail(body.getEmail(),body.getPassword());
         }
     @PostMapping("/user_name_login")
