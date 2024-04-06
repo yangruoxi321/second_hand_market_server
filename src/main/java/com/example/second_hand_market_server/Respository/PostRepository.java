@@ -14,6 +14,14 @@ public interface PostRepository {
     @Query("INSERT INTO post (user_id) VALUES (:user_id)")
     void createNewPost(@Param("user_id") Long user_id);
 
+    @Modifying
+    @Query("DELETE FROM post WHERE id = :post_id")
+    void deletePostByPostId(@Param("post_id")Long post_id);
+
     @Query("SELECT * FROM post WHERE user_id = :user_id")
     List<Post> getPostsByUserId(@Param("user_id") Long user_id);
+
+    @Query("SELECT * FROM post WHERE id = :post_id")
+    Post getPostByPostId(@Param("id") Long post_id);
+
 }

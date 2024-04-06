@@ -20,7 +20,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
 
     @Query("SELECT id FROM users WHERE user_name = :user_name")
-    Integer findUserIDByUserName(@Param("email") String user_name);
+    Integer findUserIDByUserName(@Param("user_name") String user_name);
 
 
     @Query("SELECT user_name FROM users WHERE id = :id")
