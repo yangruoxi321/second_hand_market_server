@@ -1,21 +1,19 @@
 package com.example.second_hand_market_server.Entity;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-import lombok.Data;
+
 @Data
-@Table("users")
-public class User {
+@Table("post")
+public class Post {
     @Id
     private Long id;
-
-    @Column("email")
-    private String email;
-
-    @Column("password")
-    private String password;
-
-    @Column("user_name")
-    private String userName;
+    @Column("user_id")
+    private Long userId;
+    @Column("item_description")
+    private String itemDescription;
+    @Column("item_name")
+    private String itemName;
 }
