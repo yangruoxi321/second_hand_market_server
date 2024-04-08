@@ -16,4 +16,6 @@ public class Post {
     private String itemDescription;
     @Column("item_name")
     private String itemName;
+    @Column("price")
+    private double price;
 }
