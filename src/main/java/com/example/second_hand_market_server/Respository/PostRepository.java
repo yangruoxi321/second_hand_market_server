@@ -32,7 +32,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query("UPDATE post SET item_description = :item_description WHERE id = :post_id")
     void updateItemDescriptionByPostId(@Param("post_id") Long post_id, @Param("item_description") String item_description);
 
-
-
+    @Query("SELECT user_id FROM post WHERE id = : post_id")
+    Long getUserIdByPostId(Long post_id);
 
 }

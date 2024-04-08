@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PostService {
@@ -14,11 +15,15 @@ public class PostService {
     public void createPost(Long user_id,String item_name, String item_description,double price){
         postRepository.createNewPost(user_id, item_name, item_description,price);
     }
-    public void deletePost(Long post_id){
-        postRepository.deletePostByPostId(post_id);
+    public void deletePost(Long post_id,Long user_id){
+        if(Objects.equals(user_id, postRepository.getUserIdByPostId(post_id))){
+            postRepository.deletePostByPostId(post_id);
+        }
     }
-    public void updateItemDescription(Long post_id,String itemDescription){
-        postRepository.updateItemDescriptionByPostId(post_id,itemDescription);
+    public void updateItemDescription(Long post_id,Long user_id,String itemDescription){
+        if(Objects.equals(user_id, postRepository.getUserIdByPostId(post_id))) {
+            postRepository.updateItemDescriptionByPostId(post_id,itemDescription);
+        }
     }
     public List<Post> getAllPost(){
         return postRepository.getAllPost();
