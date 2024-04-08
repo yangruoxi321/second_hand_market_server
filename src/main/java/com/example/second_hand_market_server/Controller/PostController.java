@@ -21,6 +21,7 @@ public class PostController {
     @PostMapping("/create_post")
     public void createPost(@RequestBody PostBody post) {
         Long id = tokenService.getUserIdByToken(post.getToken());
+        System.out.println(id);
         postService.createPost(id,post.getItemName(), post.getItemDescription(), post.getPrice());
     }
     @PostMapping("/deletePost")

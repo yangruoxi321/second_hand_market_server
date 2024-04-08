@@ -40,7 +40,7 @@ public class Jwt {
         JwtTokenResult result = new JwtTokenResult();
 
         return result.setEmail(jwt.getClaim(EMAIL_KEY).asString())
-                .setUser_name(jwt.getClaim(USERNAME_KEY).asString())
-                .setUser_id(jwt.getClaim(USERID_KEY).asString());
+                .setUsername(jwt.getClaim(USERNAME_KEY).asString())
+                .setUserid(jwt.getClaim(USERID_KEY).asString());
     }
 }

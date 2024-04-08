@@ -44,7 +44,7 @@ public class UserService {
             return ResponseEntity.badRequest().body(new ErrorResponse("Incorrect password"));
         }
 
-        String token = Jwt.generateToken(ImmutableMap.of("email", email, "username", userName, "userId", userId.toString()));
+        String token = Jwt.generateToken(ImmutableMap.of("email", email, "username", userName, "userid", userId.toString()));
         tokenBody.setToken(token);
         return ResponseEntity.ok(tokenBody);
     }
