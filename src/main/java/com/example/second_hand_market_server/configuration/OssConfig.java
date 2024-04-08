@@ -8,12 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-@Slf4j
 public class OssConfig {
     @Bean()
     @Scope("singleton")
     public AliOssUtil aliOssUtil(AliOssProperties aliOssProperties) {
-        log.info("开始上传阿里云上传工具类对象: {}", aliOssProperties);
         return new AliOssUtil(aliOssProperties.getEndpoint(),
                 aliOssProperties.getAccessKeyId(),
                 aliOssProperties.getAccessKeySecret(),
