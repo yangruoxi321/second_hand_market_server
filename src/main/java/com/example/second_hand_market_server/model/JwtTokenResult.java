@@ -7,6 +7,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class JwtTokenResult {
     private String email;
-    private String user_name;
-    private String user_id;
+    private String username;
+    private String userid;
 }

@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 public class TokenService {
     public String test_token(String token)  {
         JwtTokenResult jwtTokenResult = Jwt.decodeToken(token);
-        return jwtTokenResult.getEmail();
+        System.out.println(jwtTokenResult.getUsername());
+        System.out.println(jwtTokenResult.getEmail());
+        System.out.println(jwtTokenResult.getUserid());
+        System.out.println(jwtTokenResult);
+        return jwtTokenResult.getUserid();
     }
     public Long getUserIdByToken(String token){
         JwtTokenResult jwtTokenResult = Jwt.decodeToken(token);
-        String user_idString =  jwtTokenResult.getUser_id();
+        String user_idString =  jwtTokenResult.getUserid();
         Long user_id = null;
         try{
             user_id = Long.valueOf(user_idString);
@@ -27,6 +31,6 @@ public class TokenService {
     }
     public String getUserNameByToken(String token){
         JwtTokenResult jwtTokenResult = Jwt.decodeToken(token);
-        return jwtTokenResult.getUser_name();
+        return jwtTokenResult.getUsername();
     }
 }
