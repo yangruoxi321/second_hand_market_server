@@ -6,19 +6,18 @@ import com.example.second_hand_market_server.Respository.UserRepository;
 import com.example.second_hand_market_server.model.TokenBody;
 import com.example.second_hand_market_server.util.Jwt;
 import com.google.common.collect.ImmutableMap;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
-    @Autowired
+    @Resource
     private PasswordEncoder passwordEncoder;
-
 
 
     public void signUp(String email, String username, String rawPassword){
@@ -56,6 +55,7 @@ public class UserService {
     public User getUserById(Long user_id){
         return userRepository.getUserById(user_id);
     }
+
     public void rateSeller(Long id , Double rate){
         Double rateInDb =  userRepository.getSellerRate(id);
         Long numberOfPeopleRated  = userRepository.getNumberOfPeopleRated(id);

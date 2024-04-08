@@ -4,21 +4,20 @@ import com.example.second_hand_market_server.Entity.Post;
 import com.example.second_hand_market_server.Service.PostService;
 import com.example.second_hand_market_server.Service.TokenService;
 import com.example.second_hand_market_server.model.PostBody;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 //TODO
 //Need to check if time has passed use token
 
 @RestController
 public class PostController {
-    @Autowired
+    @Resource
     PostService postService;
-    @Autowired
+    @Resource
     TokenService tokenService;
 
     @PostMapping("/create_post")

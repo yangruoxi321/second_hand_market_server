@@ -31,10 +31,12 @@ public class Jwt {
         // Sign the token
         return jwtBuilder.sign(Algorithm.HMAC256(SIGNATURE));
     }
+
     public static Map<String, String> decryptToken(String token) {
         DecodedJWT jwt = JWT.require(Algorithm.HMAC256(SIGNATURE)).build().verify(token);
         return jwt.getClaims().entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().toString()));
     }
+
     public static JwtTokenResult decodeToken(String token) {
         DecodedJWT jwt = JWT.require(Algorithm.HMAC256(SIGNATURE)).build().verify(token);
         JwtTokenResult result = new JwtTokenResult();

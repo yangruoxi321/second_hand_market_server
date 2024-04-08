@@ -2,15 +2,14 @@ package com.example.second_hand_market_server.Service;
 
 import com.example.second_hand_market_server.Entity.Post;
 import com.example.second_hand_market_server.Respository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Objects;
 
 @Service
 public class PostService {
-    @Autowired
+    @Resource
     PostRepository postRepository;
     public void createPost(Long user_id,String item_name, String item_description,double price){
         postRepository.createNewPost(user_id, item_name, item_description,price);

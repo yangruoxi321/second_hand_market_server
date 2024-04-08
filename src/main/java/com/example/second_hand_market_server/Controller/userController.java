@@ -5,7 +5,7 @@ import com.example.second_hand_market_server.Respository.UserRepository;
 import com.example.second_hand_market_server.Service.UserService;
 import com.example.second_hand_market_server.catchException.DuplicateKeyException;
 import com.example.second_hand_market_server.model.RegisterBody;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class userController {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
-   @Autowired
+   @Resource
     private UserService userService;
 
     @PostMapping("/signup")
