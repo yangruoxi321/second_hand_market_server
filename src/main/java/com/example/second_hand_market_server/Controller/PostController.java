@@ -52,4 +52,8 @@ public class PostController {
     public Post getPostByPostID(@RequestBody Post post) {
         return postService.getPostByPostID(post.getId());
     }
+    @GetMapping("/search")
+    public List<Post> search(@RequestBody PostBody post){
+        return postService.search(post.getSearch());
+    }
 }

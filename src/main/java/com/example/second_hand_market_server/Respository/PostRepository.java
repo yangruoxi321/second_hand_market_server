@@ -35,5 +35,8 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query("SELECT user_id FROM post WHERE id = :post_id")
     Long getUserIdByPostId(Long post_id);
 
+    @Query("SELECT * FROM Post  WHERE item_description ILIKE :name OR item_name ILIKE :name")
+    List<Post> search(@Param("name") String name);
+
 
 }
