@@ -19,6 +19,7 @@ public class PostService {
         if(Objects.equals(user_id, postRepository.getUserIdByPostId(post_id))){
             postRepository.deletePostByPostId(post_id);
         }
+        //System.out.println(Objects.equals(user_id, postRepository.getUserIdByPostId(post_id)));
     }
     public void updateItemDescription(Long post_id,Long user_id,String itemDescription){
         if(Objects.equals(user_id, postRepository.getUserIdByPostId(post_id))) {

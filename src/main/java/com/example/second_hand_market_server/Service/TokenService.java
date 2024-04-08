@@ -12,7 +12,7 @@ public class TokenService {
         System.out.println(jwtTokenResult.getEmail());
         System.out.println(jwtTokenResult.getUserid());
         System.out.println(jwtTokenResult);
-        return jwtTokenResult.getEmail();
+        return jwtTokenResult.getUserid();
     }
     public Long getUserIdByToken(String token){
         JwtTokenResult jwtTokenResult = Jwt.decodeToken(token);

@@ -33,4 +33,15 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("SELECT * FROM users WHERE id = :id")
     User getUserById(@Param("id") Long id);
 
+    @Query("SELECT seller_rate FROM users WHERE id = :id")
+    Double getSellerRate(@Param("id") Long id);
+
+    @Query("SELECT number_of_people_rated FROM users WHERE id = :id")
+    Long getNumberOfPeopleRated(@Param("id") Long id);
+
+    @Modifying
+    @Query("UPDATE users SET seller_rate = :seller_rate WHERE id = :id")
+    void updateSellerRate(@Param("seller_rate") Double seller_rate,@Param("id") Long id );
+
+
 }

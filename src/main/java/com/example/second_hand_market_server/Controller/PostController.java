@@ -27,11 +27,14 @@ public class PostController {
     @PostMapping("/deletePost")
     public void deletePost(@RequestBody PostBody post) {
         Long user_id = tokenService.getUserIdByToken(post.getToken());
+//        System.out.println(user_id);
+//        System.out.println(user_id);
         postService.deletePost(post.getId(),user_id);
     }
     @PostMapping("/updateItemDescription")
     public void updateItemDescription(@RequestBody PostBody post) {
         Long user_id = tokenService.getUserIdByToken(post.getToken());
+        //System.out.println(user_id);
         postService.updateItemDescription(post.getId(), user_id, post.getItemDescription());
     }
     @GetMapping("/getAllPost")

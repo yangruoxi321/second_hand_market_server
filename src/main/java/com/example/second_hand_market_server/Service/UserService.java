@@ -56,4 +56,16 @@ public class UserService {
     public User getUserById(Long user_id){
         return userRepository.getUserById(user_id);
     }
+    public void rateSeller(Long id , Double rate){
+        Double rateInDb =  userRepository.getSellerRate(id);
+        Long numberOfPeopleRated  = userRepository.getNumberOfPeopleRated(id);
+
+        Double totalRate = rateInDb * numberOfPeopleRated + rate;
+
+        Long newNumberOfPeopleRated = numberOfPeopleRated + 1;
+
+        Double newRate = totalRate / newNumberOfPeopleRated;
+
+        userRepository.updateSellerRate(newRate,id);
+    }
 }

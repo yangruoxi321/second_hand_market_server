@@ -13,7 +13,8 @@ public class testTokenController {
     private TokenService tokenService;
 
     @PostMapping("/testToken")
-    public String testToken(@RequestBody TokenBody body){
-        return tokenService.test_token(body.getToken());
+    public Long testToken(@RequestBody TokenBody body){
+        Long user_id = tokenService.getUserIdByToken(body.getToken());
+        return user_id;
     }
 }
