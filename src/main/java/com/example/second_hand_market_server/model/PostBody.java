@@ -11,4 +11,5 @@ public class PostBody {
     private String itemDescription;
     private String itemName;
     private double price;
+    private String search;
 }
