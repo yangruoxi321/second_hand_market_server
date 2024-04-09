@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//TODO
-//Need to check if time has passed use token
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
