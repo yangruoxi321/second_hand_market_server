@@ -3,10 +3,16 @@ package com.example.second_hand_market_server.Service;
 import com.example.second_hand_market_server.Entity.User;
 import com.example.second_hand_market_server.Response.ErrorResponse;
 import com.example.second_hand_market_server.Respository.UserRepository;
+import com.example.second_hand_market_server.catchException.DuplicateKeyException;
 import com.example.second_hand_market_server.model.TokenBody;
 import com.example.second_hand_market_server.util.Jwt;
 import com.google.common.collect.ImmutableMap;
+
 import jakarta.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +29,17 @@ public class UserService {
     public void signUp(String email, String username, String rawPassword){
         email = email.toLowerCase();
         String password = passwordEncoder.encode(rawPassword);
-        userRepository.createNewUser(email,username,password);
+        try{
+            userRepository.createNewUser(email,username,password);
+        }catch (RuntimeException e) {
+            if (e instanceof DataIntegrityViolationException) {
+                String errorMessage = e.getMessage();
+                if (errorMessage != null && errorMessage.contains("duplicate key value violates unique constraint")) {
+                    throw new DuplicateKeyException("Email already exists: " + email);
+                }
+            }
+            throw e;
+        }
     }
 
     public ResponseEntity<?> signInViaEmail(String email, String rawPassword){

@@ -34,4 +34,8 @@ public class PostService {
     public Post getPostByPostID(Long post_id){
         return postRepository.getPostByPostId(post_id);
     }
+    public List<Post> search (String name){
+        String keyword = "%" + name.toLowerCase() + "%";
+        return postRepository.search(keyword);
+    }
 }
