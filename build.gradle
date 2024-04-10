@@ -33,9 +33,7 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
     implementation 'org.springframework.security:spring-security-oauth2-resource-server'
     implementation 'org.springframework.security:spring-security-oauth2-jose'
-
     implementation 'com.aliyun.oss:aliyun-sdk-oss:3.15.1'
-
     implementation 'org.codehaus.jettison:jettison:1.5.4'
     implementation 'net.sf.json-lib:json-lib:2.4:jdk15'
 

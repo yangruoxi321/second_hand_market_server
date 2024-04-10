@@ -1,13 +1,13 @@
 package com.example.second_hand_market_server.Service;
 
-import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 @Service
 public class mailService {
-    @Resource
+    @Autowired
     JavaMailSenderImpl mailSender;
     public void sendEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();

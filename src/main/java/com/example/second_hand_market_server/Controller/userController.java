@@ -3,11 +3,7 @@ package com.example.second_hand_market_server.Controller;
 import com.example.second_hand_market_server.Entity.User;
 import com.example.second_hand_market_server.Service.UserService;
 import com.example.second_hand_market_server.model.RegisterBody;
-import jakarta.annotation.Resource;
-import org.springframework.dao.DataIntegrityViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class userController {
 
-    @Resource
-    private UserRepository userRepository;
-
-
-
-   @Resource
+    @Autowired
     private UserService userService;
 
 

@@ -7,23 +7,20 @@ import com.example.second_hand_market_server.catchException.DuplicateKeyExceptio
 import com.example.second_hand_market_server.model.TokenBody;
 import com.example.second_hand_market_server.util.Jwt;
 import com.google.common.collect.ImmutableMap;
-
-import jakarta.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    @Resource
+    @Autowired
     private UserRepository userRepository;
 
-    @Resource
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
 
 
     public void signUp(String email, String username, String rawPassword){
@@ -71,7 +68,6 @@ public class UserService {
     public User getUserById(Long user_id){
         return userRepository.getUserById(user_id);
     }
-
     public void rateSeller(Long id , Double rate){
         Double rateInDb =  userRepository.getSellerRate(id);
         Long numberOfPeopleRated  = userRepository.getNumberOfPeopleRated(id);

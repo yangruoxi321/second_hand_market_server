@@ -1,6 +1,5 @@
 package com.example.second_hand_market_server.configuration;
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,8 +16,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .anyRequest().authenticated()
+                                .anyRequest().permitAll()
                 );
         return http.build();
     }
