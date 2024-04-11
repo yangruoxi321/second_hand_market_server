@@ -37,19 +37,21 @@ public class PostController {
         //System.out.println(user_id);
         postService.updateItemDescription(post.getId(), user_id, post.getItemDescription());
     }
-    @GetMapping("/getAllPost")
+    @PostMapping("/getAllPost")
     public List<Post> getAllPost() {
         return postService.getAllPost();
     }
-    @GetMapping("/getPostByUserId")
+    @PostMapping("/getPostByUserId")
     public List<Post> getPostByUserId(@RequestBody Post post) {
         return postService.getPostByUserId(post.getUserId());
     }
-    @GetMapping("/getPostByPostID")
+    @PostMapping("/getPostByPostID")
     public Post getPostByPostID(@RequestBody Post post) {
         return postService.getPostByPostID(post.getId());
     }
-    @GetMapping("/search")
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/search")
     public List<Post> search(@RequestBody PostBody post){
         return postService.search(post.getSearch());
     }
