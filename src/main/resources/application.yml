@@ -21,3 +21,7 @@ alioss:
   access-key-id: LTAI5tDYKyUTznYwcET1YNVG
   access-key-secret: HMx2Jv6HQa2C69i6cI0POljaY4i8mV
   bucket-name: 2-hand-market
+
+Jwt:
+  SIGNATURE: "eKKF2Q#T4fwpM@eJf3"
+

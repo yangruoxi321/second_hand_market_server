@@ -36,7 +36,6 @@ dependencies {
     implementation 'com.aliyun.oss:aliyun-sdk-oss:3.15.1'
     implementation 'org.codehaus.jettison:jettison:1.5.4'
     implementation 'net.sf.json-lib:json-lib:2.4:jdk15'
-
 }
 
 
