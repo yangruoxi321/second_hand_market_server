@@ -14,4 +14,5 @@ public class PostBody {
     private String itemName;
     private double price;
     private String search;
+    private String imageUrl;
 }
