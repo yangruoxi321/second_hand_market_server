@@ -19,5 +19,5 @@ public class Post {
     @Column("price")
     private double price;
     @Column("img_url")
-    private String imageUrl;
+    private String url;
 }
