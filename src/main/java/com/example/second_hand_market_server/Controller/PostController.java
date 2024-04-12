@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class PostController {
     @Autowired
     PostService postService;
@@ -34,7 +34,6 @@ public class PostController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
     }
 
     @PostMapping("/testUpload")
