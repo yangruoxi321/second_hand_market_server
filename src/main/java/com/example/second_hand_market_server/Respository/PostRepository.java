@@ -41,4 +41,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query("INSERT INTO post (img_url) VALUES (:img_url)")
     void testUploadImg(String img_url);
 
+    @Query("SELECT price FROM post WHERE id = :post_id")
+    Double getPrice(Long post_id);
 }

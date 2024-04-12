@@ -31,7 +31,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("SELECT password FROM users WHERE id = :id")
     String getPassword(@Param("id") Long id);
 
-    @Query("SELECT id,email,user_name,seller_rate FROM users WHERE id = :id")
+    @Query("SELECT id,email,user_name,seller_rate,wallet FROM users WHERE id = :id")
     ProfileBody getProfile(@Param("id") Long id);
 
     @Query("SELECT seller_rate FROM users WHERE id = :id")
@@ -44,5 +44,10 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("UPDATE users SET seller_rate = :seller_rate WHERE id = :id")
     void updateSellerRate(@Param("seller_rate") Double seller_rate,@Param("id") Long id );
 
+    @Query("SELECT wallet from users where id = :id")
+    Double getWallet(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE users SET wallet = :wallet WHERE id = :id")
+    void updateWallet(@Param("wallet") Double wallet, @Param("id") Long id);
 }
