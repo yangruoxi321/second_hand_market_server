@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -25,8 +26,13 @@ public class userController {
     }
     @PostMapping("/email_login")
     public ResponseEntity<?> loginViaUserEmail(@RequestBody RegisterBody body){
-            return userService.signInViaEmail(body.getEmail(),body.getPassword());
+        try{
+            userService.signInViaEmail(body.getEmail(),body.getPassword());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid email or password");
         }
+    }
     @PostMapping("/user_name_login")
     public void loginViaUserName(@RequestBody RegisterBody body) {
         userService.signInViaUserName(body.getUserName(), body.getPassword());

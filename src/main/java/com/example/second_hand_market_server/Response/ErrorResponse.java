@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 
 public class ErrorResponse {
-    private String errorMessage;
+    private String message;
 
     public ErrorResponse(String error) {
-        this.errorMessage = error;
+        this.message = error;
     }
 }
