@@ -1,9 +1,9 @@
 package com.example.second_hand_market_server.Service;
 
-import com.example.second_hand_market_server.Entity.User;
 import com.example.second_hand_market_server.Response.ErrorResponse;
 import com.example.second_hand_market_server.Respository.UserRepository;
 import com.example.second_hand_market_server.catchException.DuplicateKeyException;
+import com.example.second_hand_market_server.model.ProfileBody;
 import com.example.second_hand_market_server.model.TokenBody;
 import com.example.second_hand_market_server.util.Jwt;
 import com.google.common.collect.ImmutableMap;
@@ -65,8 +65,8 @@ public class UserService {
     public  void signInViaUserName(String username, String rawPassword){
 
     }
-    public User getUserById(Long user_id){
-        return userRepository.getUserById(user_id);
+    public ProfileBody getProfile(Long user_id){
+        return userRepository.getProfile(user_id);
     }
     public void rateSeller(Long id , Double rate){
         Double rateInDb =  userRepository.getSellerRate(id);

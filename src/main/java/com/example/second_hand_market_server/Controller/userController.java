@@ -1,7 +1,8 @@
 package com.example.second_hand_market_server.Controller;
 
-import com.example.second_hand_market_server.Entity.User;
+import com.example.second_hand_market_server.Service.TokenService;
 import com.example.second_hand_market_server.Service.UserService;
+import com.example.second_hand_market_server.model.ProfileBody;
 import com.example.second_hand_market_server.model.RegisterBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 public class userController {
-
     @Autowired
     private UserService userService;
 
+    @Autowired
+    TokenService tokenService;
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
@@ -30,9 +32,10 @@ public class userController {
         userService.signInViaUserName(body.getUserName(), body.getPassword());
     }
 
-    @PostMapping("/getUserById")
-    public User getUserById(@RequestBody User body) {
-       return userService.getUserById(body.getId());
+    @PostMapping("/profile")
+    public ProfileBody profile(@RequestHeader String token) {
+        Long user_id = tokenService.getUserIdByToken(token);
+        return userService.getProfile(user_id);
     }
 }
 
