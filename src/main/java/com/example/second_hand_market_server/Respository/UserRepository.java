@@ -2,6 +2,7 @@ package com.example.second_hand_market_server.Respository;
 
 
 import com.example.second_hand_market_server.Entity.User;
+import com.example.second_hand_market_server.model.ProfileBody;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -30,8 +31,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("SELECT password FROM users WHERE id = :id")
     String getPassword(@Param("id") Long id);
 
-    @Query("SELECT * FROM users WHERE id = :id")
-    User getUserById(@Param("id") Long id);
+    @Query("SELECT id,email,user_name,seller_rate,wallet FROM users WHERE id = :id")
+    ProfileBody getProfile(@Param("id") Long id);
 
     @Query("SELECT seller_rate FROM users WHERE id = :id")
     Double getSellerRate(@Param("id") Long id);
@@ -43,5 +44,10 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("UPDATE users SET seller_rate = :seller_rate WHERE id = :id")
     void updateSellerRate(@Param("seller_rate") Double seller_rate,@Param("id") Long id );
 
+    @Query("SELECT wallet from users where id = :id")
+    Double getWallet(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE users SET wallet = :wallet WHERE id = :id")
+    void updateWallet(@Param("wallet") Double wallet, @Param("id") Long id);
 }

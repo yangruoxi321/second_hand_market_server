@@ -18,4 +18,7 @@ public class Post {
     private String itemName;
     @Column("price")
     private double price;
+    @Column("img_url")
+    private String url;
+    private boolean canDelete;
 }

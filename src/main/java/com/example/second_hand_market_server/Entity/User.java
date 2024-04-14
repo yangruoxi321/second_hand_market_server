@@ -18,4 +18,7 @@ public class User {
 
     @Column("user_name")
     private String userName;
+
+    @Column("seller_rate")
+    private double sellerRate;
 }

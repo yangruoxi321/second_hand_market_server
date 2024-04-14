@@ -18,6 +18,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtVerificationInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns(ImmutableList.of("/getAllPost", "/getPostByUserId", "/getPostByUserId", "/search","/email_login","/signup"));
+                .excludePathPatterns(ImmutableList.of("/getAllPost", "/getPostByUserId", "/search","/email_login","/signup"));
     }
 }

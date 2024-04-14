@@ -1,14 +1,15 @@
 package com.example.second_hand_market_server.Service;
 
-import com.example.second_hand_market_server.Entity.User;
 import com.example.second_hand_market_server.Response.ErrorResponse;
 import com.example.second_hand_market_server.Respository.UserRepository;
 import com.example.second_hand_market_server.catchException.DuplicateKeyException;
+import com.example.second_hand_market_server.model.ProfileBody;
 import com.example.second_hand_market_server.model.TokenBody;
 import com.example.second_hand_market_server.util.Jwt;
 import com.google.common.collect.ImmutableMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ public class UserService {
         Long userId = userRepository.findUserIDByEmail(email);
 
         if(userId == null) {
-            return ResponseEntity.badRequest().body(new ErrorResponse("There is no such user"));
+            return new ResponseEntity<ErrorResponse>(new ErrorResponse("There is no such user"), HttpStatus.UNAUTHORIZED);
         }
 
         String userName = userRepository.findUserNameById(userId);
@@ -53,7 +54,7 @@ public class UserService {
         boolean checkPasswordMatch = passwordEncoder.matches(rawPassword, password);
 
         if(!checkPasswordMatch) {
-            return ResponseEntity.badRequest().body(new ErrorResponse("Incorrect password"));
+            return new ResponseEntity<ErrorResponse>(new ErrorResponse("Incorrect password"), HttpStatus.UNAUTHORIZED); //Incorrect password
         }
 
         String token = Jwt.generateToken(ImmutableMap.of("email", email, "username", userName, "userid", userId.toString()));
@@ -65,8 +66,8 @@ public class UserService {
     public  void signInViaUserName(String username, String rawPassword){
 
     }
-    public User getUserById(Long user_id){
-        return userRepository.getUserById(user_id);
+    public ProfileBody getProfile(Long user_id){
+        return userRepository.getProfile(user_id);
     }
     public void rateSeller(Long id , Double rate){
         Double rateInDb =  userRepository.getSellerRate(id);
