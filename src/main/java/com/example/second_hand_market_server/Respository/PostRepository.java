@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
     @Modifying
-    @Query("INSERT INTO post (user_id,item_name,item_description,price,img_url) VALUES (:user_id,:item_name,:item_description,:price,:img_url)")
+    @Query("INSERT INTO post (user_id,item_name,item_description,price,img_url,is_purchased) VALUES (:user_id,:item_name,:item_description,:price,:img_url,false)")
     void createNewPost( Long user_id,String item_name,String item_description, Double price,String img_url);
 
     @Modifying
@@ -21,7 +21,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query("SELECT * FROM post WHERE user_id = :user_id")
     List<Post> getPostsByUserId(Long user_id);
 
-    @Query("SELECT * FROM post")
+    @Query("SELECT * FROM post where  is_purchased is false")
     List<Post> getAllPost();
 
     @Query("SELECT * FROM post WHERE id = :id")
@@ -43,4 +43,11 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     @Query("SELECT price FROM post WHERE id = :post_id")
     Double getPrice(Long post_id);
+
+    @Query("SELECT * FROM post WHERE is_purchased is true and buyer_id = :buyer_id")
+    List<Post> purchasedItem(Long buyer_id);
+
+    @Modifying
+    @Query("UPDATE post SET is_purchased = true, buyer_id = :buyerId WHERE id = :id")
+    void setIsPurchasedStatusToTrue(Long buyerId,Long id);
 }
