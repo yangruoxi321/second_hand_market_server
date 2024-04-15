@@ -20,7 +20,6 @@ public class purchaseService {
     @Autowired
     UserRepository userRepository;
 
-    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Transactional
     public void purchaseItem(Long post_id,Long buyer_id) throws InsufficientBalanceException {
