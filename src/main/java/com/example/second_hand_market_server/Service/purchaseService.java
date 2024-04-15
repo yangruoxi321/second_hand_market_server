@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.DecimalFormat;
+
 import java.util.List;
 
 @Service
@@ -47,10 +47,8 @@ public class purchaseService {
         Double totalRate = rateInDb * numberOfPeopleRated + rate;
         Long newNumberOfPeopleRated = numberOfPeopleRated + 1;
         Double newRate = (totalRate / newNumberOfPeopleRated);
-
-        Double roundNewRate = df.format(newRate);
-
-        userRepository.updateSellerRate(newRate,newNumberOfPeopleRated, post_id);
+        Double roundNewRate = Math.round(newRate * 100.0) / 100.0;
+        userRepository.updateSellerRate(roundNewRate,newNumberOfPeopleRated, post_id);
 
     }
 }
