@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
     @Modifying
-    @Query("INSERT INTO users (user_name,email,password) VALUES (:userName,:email,:password)")
+    @Query("INSERT INTO users (user_name,email,password,seller_rate,number_of_people_rated,wallet) VALUES (:userName,:email,:password,0,0,0)")
     void createNewUser(@Param("email") String email,@Param("userName") String userName,@Param("password") String password);
 
     @Query("SELECT id FROM users WHERE email = :email")
@@ -41,8 +41,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     Long getNumberOfPeopleRated(@Param("id") Long id);
 
     @Modifying
-    @Query("UPDATE users SET seller_rate = :seller_rate WHERE id = :id")
-    void updateSellerRate(@Param("seller_rate") Double seller_rate,@Param("id") Long id );
+    @Query("UPDATE users SET seller_rate = :seller_rate, number_of_people_rated = :number_of_people_rated WHERE id = :id")
+    void updateSellerRate(@Param("seller_rate") Double seller_rate,@Param("number_of_people_rated") Long number_of_people_rated, @Param("id") Long id );
 
     @Query("SELECT wallet from users where id = :id")
     Double getWallet(@Param("id") Long id);
