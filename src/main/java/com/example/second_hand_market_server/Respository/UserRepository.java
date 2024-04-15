@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
     @Modifying
-    @Query("INSERT INTO users (user_name,email,password,seller_rate,number_of_people_rated) VALUES (:userName,:email,:password,0,0)")
+    @Query("INSERT INTO users (user_name,email,password,seller_rate,number_of_people_rated,wallet) VALUES (:userName,:email,:password,0,0,0)")
     void createNewUser(@Param("email") String email,@Param("userName") String userName,@Param("password") String password);
 
     @Query("SELECT id FROM users WHERE email = :email")
