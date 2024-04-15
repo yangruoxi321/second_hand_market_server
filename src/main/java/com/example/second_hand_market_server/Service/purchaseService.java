@@ -41,13 +41,14 @@ public class purchaseService {
     }
     public void rateSeller(Long post_id,Double rate){
         Long seller_id = postRepository.getUserIdByPostId(post_id);
+        //System.out.println(seller_id);
         Double rateInDb =  userRepository.getSellerRate(seller_id);
         Long numberOfPeopleRated  = userRepository.getNumberOfPeopleRated(seller_id);
         Double totalRate = rateInDb * numberOfPeopleRated + rate;
         Long newNumberOfPeopleRated = numberOfPeopleRated + 1;
         Double newRate = (totalRate / newNumberOfPeopleRated);
         Double roundNewRate = Math.round(newRate * 100.0) / 100.0;
-        userRepository.updateSellerRate(roundNewRate,newNumberOfPeopleRated, post_id);
+        userRepository.updateSellerRate(roundNewRate,newNumberOfPeopleRated, seller_id);
 
     }
 }
