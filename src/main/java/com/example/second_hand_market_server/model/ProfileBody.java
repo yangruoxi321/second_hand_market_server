@@ -7,4 +7,5 @@ public class ProfileBody {
     private String email;
     private String userName;
     private double sellerRate;
+    private double wallet;
 }

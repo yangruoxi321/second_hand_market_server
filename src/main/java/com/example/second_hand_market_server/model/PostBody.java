@@ -15,4 +15,5 @@ public class PostBody {
     private double price;
     private String search;
     private String imageUrl;
+    private boolean canDelete;
 }

@@ -7,6 +7,7 @@ import com.example.second_hand_market_server.model.PostBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,11 +43,9 @@ public class PostController {
     }
 
     @PostMapping("/deletePost")
-    public void deletePost(@RequestBody PostBody post,@RequestHeader String token) {
+    public ResponseEntity<?> deletePost(@RequestBody PostBody post, @RequestHeader String token) {
         Long user_id = tokenService.getUserIdByToken(token);
-//        System.out.println(user_id);
-//        System.out.println(user_id);
-        postService.deletePost(post.getId(),user_id);
+        return postService.deletePost(post.getId(),user_id);
     }
     @PostMapping("/updateItemDescription")
     public void updateItemDescription(@RequestBody PostBody post,@RequestHeader String token) {
@@ -54,10 +53,15 @@ public class PostController {
         //System.out.println(user_id);
         postService.updateItemDescription(post.getId(), user_id, post.getItemDescription());
     }
+
+
     @PostMapping("/getAllPost")
-    public List<Post> getAllPost() {
-        return postService.getAllPost();
+    public List<Post> getAllPost(@RequestHeader String token) {
+        Long user_id = tokenService.getUserIdByToken(token);
+        return postService.getAllPost(user_id);
     }
+
+
     @PostMapping("/getPostByUserId")
     public List<Post> getPostByUserId(@RequestBody Post post) {
         return postService.getPostByUserId(post.getUserId());
@@ -67,7 +71,6 @@ public class PostController {
         return postService.getPostByPostID(post.getId());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/search")
     public List<Post> search(@RequestBody PostBody post){
         return postService.search(post.getSearch());

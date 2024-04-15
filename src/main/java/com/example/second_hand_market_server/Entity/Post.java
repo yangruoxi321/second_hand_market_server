@@ -20,4 +20,5 @@ public class Post {
     private double price;
     @Column("img_url")
     private String url;
+    private boolean canDelete;
 }
